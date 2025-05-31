@@ -93,6 +93,7 @@ export default function Projects() {
           My <span className="blue-gradient-text">Projects</span>
         </h2>
 
+        {/* Category Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           {categories.map((category) => (
             <Button
@@ -110,11 +111,10 @@ export default function Projects() {
           ))}
         </div>
 
+        {/* Main Project Card with Arrows */}
         <div className="relative max-w-3xl mx-auto">
-          {/* Project card */}
           {filteredProjects.length > 0 && <ProjectCard project={filteredProjects[currentIndex]} />}
 
-          {/* Left Arrow */}
           <button
             onClick={prevProject}
             aria-label="Previous project"
@@ -123,7 +123,6 @@ export default function Projects() {
             <ChevronLeft className="w-6 h-6 text-white" />
           </button>
 
-          {/* Right Arrow */}
           <button
             onClick={nextProject}
             aria-label="Next project"
@@ -131,20 +130,27 @@ export default function Projects() {
           >
             <ChevronRight className="w-6 h-6 text-white" />
           </button>
+        </div>
 
-          {/* Bubbles */}
-          <div className="flex justify-center mt-6 space-x-3">
-            {filteredProjects.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                className={`w-4 h-4 rounded-full transition-colors ${
-                  currentIndex === idx ? "bg-blue-600" : "bg-gray-600"
-                }`}
-                aria-label={`Go to project ${idx + 1}`}
+        {/* Thumbnails */}
+        <div className="flex justify-center flex-wrap gap-3 mt-6">
+          {filteredProjects.map((proj, idx) => (
+            <div
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              className={`w-20 h-16 border-2 rounded overflow-hidden cursor-pointer transition-all duration-300 ${
+                currentIndex === idx ? "border-blue-500 scale-105" : "border-gray-600"
+              }`}
+            >
+              <Image
+                src={proj.image || "/placeholder.svg"}
+                alt={`Thumbnail ${idx + 1}`}
+                width={80}
+                height={64}
+                className="w-full h-full object-cover"
               />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

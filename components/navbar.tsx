@@ -5,23 +5,13 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, FileDown } from "lucide-react"
+import { downloadResume } from "./resume-utils"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
-  }
-
-  const handleResumeClick = (e) => {
-    e.preventDefault()
-    // Create a link to the PDF file
-    const link = document.createElement("a")
-    link.href = "/sample-resume.pdf"
-    link.download = "Sanjay_Kumar_Resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
   }
 
   return (
@@ -42,7 +32,7 @@ export default function Navbar() {
               <NavLink href="#skills">Skills</NavLink>
               <NavLink href="#contact">Contact</NavLink>
               <button
-                onClick={handleResumeClick}
+                onClick={downloadResume}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center"
               >
                 <FileDown className="mr-2 h-4 w-4" />
@@ -78,7 +68,7 @@ export default function Navbar() {
             </MobileNavLink>
             <div className="pt-2">
               <button
-                onClick={handleResumeClick}
+                onClick={downloadResume}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center justify-center"
               >
                 <FileDown className="mr-2 h-4 w-4" />
