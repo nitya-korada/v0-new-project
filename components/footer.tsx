@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Github, Linkedin, Mail, FileText } from "lucide-react"
+import { Github, Linkedin, Mail, FileText } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -14,13 +14,8 @@ export default function Footer() {
 
   const handleResumeClick = (e) => {
     e.preventDefault()
-    // Create a link to the PDF file
-    const link = document.createElement("a")
-    link.href = "/sample-resume.pdf"
-    link.download = "Sanjay_Kumar_Resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    // Navigate to the resume page instead of downloading PDF
+    window.open("/resume", "_blank")
   }
 
   return (
