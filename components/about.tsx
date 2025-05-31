@@ -1,20 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import { FileDown } from "lucide-react"
+import { FileDown } from 'lucide-react'
+import Link from "next/link"
 
 export default function About() {
-  const handleResumeClick = (e) => {
-    e.preventDefault()
-    // Create a link to the PDF file
-    const link = document.createElement("a")
-    link.href = "/sample-resume.pdf"
-    link.download = "Sanjay_Kumar_Resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
   return (
     <section id="about" className="bg-black py-10">
       <div className="section-container">
@@ -72,13 +62,13 @@ export default function About() {
               </div>
             </div>
 
-            <button
-              onClick={handleResumeClick}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center"
+            <Link
+              href="/resume"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center w-fit"
             >
               <FileDown className="mr-2 h-4 w-4" />
-              Download Resume
-            </button>
+              View Resume
+            </Link>
           </div>
         </div>
       </div>
