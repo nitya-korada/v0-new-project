@@ -3,28 +3,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import {
-  Code,
-  Database,
-  BarChart,
-  Brain,
-  LineChart,
-  Layers,
-  PieChart,
-  AreaChart,
-  Sigma,
-  Braces,
-  FileCode,
-  Cpu,
-  Table,
-  Calculator,
-  BookOpen,
-  Terminal,
-  FileJson,
-  Microscope,
-  Network,
-  Sparkles,
-  BarChart2,
-  BarChart3,
+  Code, Database, BarChart, Brain, LineChart, Layers, PieChart, AreaChart,
+  Sigma, Braces, FileCode, Cpu, Table, Calculator, BookOpen, Terminal,
+  FileJson, Microscope, Network, Sparkles, BarChart2, BarChart3,
 } from "lucide-react"
 
 const skillCategories = [
@@ -104,15 +85,16 @@ export default function Skills() {
               <Card className="bg-black/50 border border-white/10">
                 <CardContent className="pt-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {category.skills.map((skill) => {
-                      const Icon = skill.icon
-                      return (
-                        <div key={skill.name} className="flex items-center gap-3" title={skill.tooltip}>
-                          <Icon className="h-6 w-6 text-blue-400" aria-label={skill.name} />
-                          <span className="text-white font-medium">{skill.name}</span>
-                        </div>
-                      )
-                    })}
+                    {category.skills.map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="flex items-center gap-3 p-2 hover:bg-white/10 rounded-md"
+                        title={skill.tooltip}
+                      >
+                        <skill.icon className="h-6 w-6 text-blue-400" />
+                        <span className="text-white font-medium">{skill.name}</span>
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>

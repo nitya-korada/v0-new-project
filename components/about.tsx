@@ -2,9 +2,19 @@
 
 import Image from "next/image"
 import { FileDown } from "lucide-react"
-import { downloadResume } from "./resume-utils"
 
 export default function About() {
+  const handleResumeClick = (e) => {
+    e.preventDefault()
+    // Create a link to the PDF file
+    const link = document.createElement("a")
+    link.href = "/sample-resume.pdf"
+    link.download = "Sanjay_Kumar_Resume.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <section id="about" className="bg-black py-10">
       <div className="section-container">
@@ -50,9 +60,7 @@ export default function About() {
               </div>
               <div>
                 <h4 className="text-blue-400 font-bold mb-1">Email:</h4>
-                <a href="mailto:sanjaykumarm2599@gmail.com" className="text-white hover:text-blue-400">
-                  sanjaykumarm2599@gmail.com
-                </a>
+                <p className="text-white">sanjaykumarm2599@gmail.com</p>
               </div>
               <div>
                 <h4 className="text-blue-400 font-bold mb-1">Location:</h4>
@@ -60,14 +68,12 @@ export default function About() {
               </div>
               <div>
                 <h4 className="text-blue-400 font-bold mb-1">Phone:</h4>
-                <a href="tel:9409774602" className="text-white hover:text-blue-400">
-                  940-977-4602
-                </a>
+                <p className="text-white">940-977-4602</p>
               </div>
             </div>
 
             <button
-              onClick={downloadResume}
+              onClick={handleResumeClick}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center"
             >
               <FileDown className="mr-2 h-4 w-4" />

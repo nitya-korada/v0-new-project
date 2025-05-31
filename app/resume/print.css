@@ -1,0 +1,33 @@
+/* File: app/resume/globals.css */
+@media print {
+  @page {
+    margin: 0.5cm;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.3;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  img, table, figure {
+    page-break-inside: avoid;
+  }
+
+  ul, ol, dl {
+    page-break-before: avoid;
+  }
+}

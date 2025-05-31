@@ -5,7 +5,6 @@ import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, FileDown } from "lucide-react"
-import { downloadResume } from "./resume-utils"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,6 +12,10 @@ export default function Navbar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
+
+  const handleResumeClick = () => {
+  window.open('/resume', '_blank')
+}
 
   return (
     <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-sm border-b border-white/10">
@@ -31,21 +34,29 @@ export default function Navbar() {
               <NavLink href="#projects">Projects</NavLink>
               <NavLink href="#skills">Skills</NavLink>
               <NavLink href="#contact">Contact</NavLink>
-              <button
-                onClick={downloadResume}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center"
+              <Link
+              href="/resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center"
               >
-                <FileDown className="mr-2 h-4 w-4" />
-                Resume
-              </button>
+               <FileDown className="mr-2 h-4 w-4" />
+               Resume
+              </Link>
             </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button onClick={toggleMenu} className="text-white hover:text-blue-400" aria-label="Toggle menu">
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+          <Link
+          href="/resume"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center justify-center"
+          >
+            <FileDown className="mr-2 h-4 w-4" />
+            Resume
+          </Link>
           </div>
         </div>
       </div>
@@ -68,7 +79,7 @@ export default function Navbar() {
             </MobileNavLink>
             <div className="pt-2">
               <button
-                onClick={downloadResume}
+                onClick={handleResumeClick}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center justify-center"
               >
                 <FileDown className="mr-2 h-4 w-4" />

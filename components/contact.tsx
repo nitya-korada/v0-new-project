@@ -42,25 +42,8 @@ export default function Contact() {
 
   const handleEmailClick = (e) => {
     e.preventDefault()
-    // Use a direct mailto link with a fallback
-    const emailAddress = "sanjaykumarm2599@gmail.com"
-    const mailtoLink = `mailto:${emailAddress}`
-
-    // Try to open the email client
-    window.location.href = mailtoLink
-
-    // Fallback - show a message if the email client doesn't open
-    setTimeout(() => {
-      // Copy email to clipboard as a fallback
-      navigator.clipboard
-        .writeText(emailAddress)
-        .then(() => {
-          alert(`Email address copied to clipboard: ${emailAddress}`)
-        })
-        .catch(() => {
-          alert(`Please email me at: ${emailAddress}`)
-        })
-    }, 300)
+    console.log("Email button clicked")
+    window.location.href = "mailto:sanjaykumarm2599@gmail.com"
   }
 
   return (
@@ -79,9 +62,9 @@ export default function Contact() {
             </p>
 
             <div className="space-y-4">
-              <a
-                href="mailto:sanjaykumarm2599@gmail.com"
-                className="flex items-start space-x-3 p-3 rounded-lg border border-white/10 hover:border-blue-500 transition-colors duration-300 w-full text-left"
+              <button
+                onClick={handleEmailClick}
+                className="flex items-start space-x-3 p-3 rounded-lg border border-white/10 hover:border-blue-500 transition-colors duration-300 w-full text-left bg-transparent"
               >
                 <div className="mt-1">
                   <Mail className="h-5 w-5 text-blue-400" />
@@ -90,7 +73,7 @@ export default function Contact() {
                   <h4 className="text-white font-medium">Email</h4>
                   <p className="text-white/70">sanjaykumarm2599@gmail.com</p>
                 </div>
-              </a>
+              </button>
               <a
                 href="tel:9409774602"
                 className="flex items-start space-x-3 p-3 rounded-lg border border-white/10 hover:border-blue-500 transition-colors duration-300"

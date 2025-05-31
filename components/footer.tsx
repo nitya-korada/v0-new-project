@@ -2,10 +2,26 @@
 
 import Link from "next/link"
 import { Github, Linkedin, Mail, FileText } from "lucide-react"
-import { downloadResume } from "./resume-utils"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+
+  const handleEmailClick = (e) => {
+    e.preventDefault()
+    console.log("Email button clicked")
+    window.location.href = "mailto:sanjaykumarm2599@gmail.com"
+  }
+
+  const handleResumeClick = (e) => {
+    e.preventDefault()
+    // Create a link to the PDF file
+    const link = document.createElement("a")
+    link.href = "/sample-resume.pdf"
+    link.download = "Sanjay_Kumar_Resume.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 
   return (
     <footer className="bg-black border-t border-white/10 py-12">
@@ -40,15 +56,15 @@ export default function Footer() {
             >
               <Linkedin />
             </a>
-            <a
-              href="mailto:sanjaykumarm2599@gmail.com"
+            <button
+              onClick={handleEmailClick}
               aria-label="Email"
-              className="text-white/80 hover:text-blue-400 transition-colors duration-300"
+              className="text-white/80 hover:text-blue-400 transition-colors duration-300 bg-transparent border-none p-0 cursor-pointer"
             >
               <Mail />
-            </a>
+            </button>
             <button
-              onClick={downloadResume}
+              onClick={handleResumeClick}
               aria-label="Resume"
               className="text-white/80 hover:text-blue-400 transition-colors duration-300 bg-transparent border-none p-0 cursor-pointer"
             >
